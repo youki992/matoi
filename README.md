@@ -19,7 +19,7 @@ matoi 是一个在Linux / Windows平台下运行的信息收集、漏洞应急�
 
 ## matoi功能
 
-matoi目前beta版本仅封装了端口探测、C端扫描、子域名扫描的功能，且暂时支持单个URL/ip查询
+matoi目前beta版本仅封装了端口探测、C端扫描、子域名扫描的功能，且暂时支持单个URL/IP查询
 
 - 爬虫
 - 端口探测
