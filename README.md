@@ -43,7 +43,7 @@ matoi目前beta版本仅封装了端口探测、C端扫描、子域名扫描的�
 
 - source mysql.sql 进入mysql控制台安装数据库依赖
 - pip install -r requirements.txt 安装python依赖
-- 在二级目录下新建 __init__.py
+- 在二级目录下新建 __ init __ .py
 - python app.py 启动后访问localhost:5000
 
 ## 鸣谢
