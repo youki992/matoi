@@ -1,5 +1,5 @@
 <div align="center">
-   <img width="160" src="./matoi.png" alt="logo"></br>
+   <img width="160" src="./matoi/matoi.png" alt="logo"></br>
 
 
 
@@ -10,6 +10,8 @@ matoi 是一个在Linux / Windows平台下运行的信息收集、漏洞应急�
 </div>
 
 ## matoi声明
+
+![image](./matoi/show.png)
 
 ### 本工具旨在辅助安全测试，请勿用于非法用途
 
@@ -35,7 +37,7 @@ matoi目前beta版本仅封装了端口探测、C端扫描、子域名扫描的�
 
 ## 演示
 
-![image](./matoi.gif)
+![image](./matoi/matoi.gif)
 
 由于端口扫描的局限性，引入了fofa的链接，作为单个URL探测的参考
 
