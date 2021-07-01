@@ -19,7 +19,7 @@ matoi 是一个在Linux / Windows平台下运行的信息收集、漏洞应急�
 
 ## matoi功能
 
-matoi目前beta版本仅封装了信息收集、子域名扫描的功能
+matoi目前beta版本仅封装了端口探测、C端扫描、子域名扫描的功能，且暂时支持单个URL/ip查询
 
 - 爬虫
 - 端口探测
@@ -38,6 +38,14 @@ matoi目前beta版本仅封装了信息收集、子域名扫描的功能
 ![image](./matoi.gif)
 
 由于端口扫描的局限性，引入了fofa的链接，作为单个URL探测的参考
+
+## 安装使用
+
+"""
+source mysql.sql 安装数据库
+pip install -r requirements.txt 安装python依赖
+python app.py 启动后访问localhost:5000
+"""
 
 ## 鸣谢
 
