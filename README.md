@@ -20,6 +20,7 @@ matoi 是一个在Linux / Windows平台下运行的信息收集、漏洞应急�
 ## matoi功能
 
 matoi目前beta版本暂时支持单个URL/IP查询
+请下载release进行使用
 
 - 爬虫
 - 目录爆破
