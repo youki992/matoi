@@ -45,11 +45,11 @@ matoi目前beta版本暂时支持单个URL/IP查询
 
 ## 安装使用
 
-- 在mysql数据库创建用户root，密码为空（或是修改root密码为空）
+- 安装Mysql数据库，并在mysql数据库创建用户root，密码为空（或是修改root密码为空）
 - source 数据库文件目录下的sql文件 进入mysql控制台安装数据库依赖
-- pip install -r requirements.txt 安装python依赖
-- （非必要）在二级目录下新建 __ init __ .py
-- python choscan.py 终端启动工具
+- pip install -r requirements.txt 安装python依赖（可能不完整，需要后续自行安装）
+- (非必要)在二级目录下新建 __ init __ .py
+- python choscan.py 终端界面启动工具
 
 ## 鸣谢
 
