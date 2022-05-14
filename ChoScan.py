@@ -10,14 +10,14 @@ import os
 import subprocess
 import socket
 import argparse
-from scripts import printColor,laji,zhuji
+from scripts import printColor
 from subprocess import Popen,PIPE
 from threading import Thread
 from lib.core.Spider import SpiderMain
 from lib.core import PortScan
-from tools import awvs_add_url
 from scripts import fastjson_blby
 from scripts import XSS_scan
+from scripts import your_poc
 from scripts import YongYouCheck
 from scripts import YongYouCheck2
 from scripts import ZhiYuanCheck
@@ -38,17 +38,18 @@ __version__ = 'v0.3'
 console = Console()
 
 def banner():
-    console.print('''[red]
-      ___                 
-     /████|  ██|__   __███/   ████     ████                ████
-    /██/ █   |████  █_     █  █ _       ██  █    ████|     ██  ██
-    |██|      ██| |██ █(__)█|  ████| ██|       █| |██|   |██    ██
-    \██| █  |██|  ██/ █_ █/   __    █   ██_|█|_ █   ███   ██    ██
-      ████  ██   ██   ██     ████     ████  ████     ██    ██    
-                                    [/red][yellow]code by {0}[/yellow] [blue]{1}[/blue]
+    show = r'''
 
+       .__                                       
+  ____ |  |__   ____  ______ ____ _____    ____  
+_/ ___\|  |  \ /  _ \/  ___// ___\\__  \  /    \ 
+\  \___|   Y  (  <_> )___ \\  \___ / __ \|   |  \
+ \___  >___|  /\____/____  >\___  >____  /___|  /
+     \/     \/           \/     \/     \/     \/ 
 
-'''.format(__author__, __version__))
+    					coded by chobits v0.4
+    	'''
+    print(show + '\n')
 
 class Scan(Thread):
     def __init__(self, IP, scan_type, file):
@@ -169,13 +170,11 @@ def scan_start():
     scan(ip, port)
 
 def xray(data1):
-    os.chdir("./tools")
     target = data1
-    cmd = ["xray_windows_amd64.exe", "webscan", "--browser-crawler", target, "--webhook-output", "http://127.0.0.1:5000/webhook"]
+    cmd = ["./tools/xray_windows_amd64.exe", "webscan", "--browser-crawler", target, "--webhook-output", "http://127.0.0.1:5000/webhook"]
     rsp = subprocess.Popen(cmd)
     output, error = rsp.communicate()
     print(output)
-    os.chdir("../")
 
 def xray_start():
     file = open("url.txt")
@@ -208,17 +207,17 @@ if __name__ == '__main__':
     )
 
     parser.add_argument("-t", dest="task",
-                        help="1:纯链接式爬取  2:C段扫描  3:fastjson检测(源码配置ceye.io)  4:xss检测(配置chromedriver,参数例:'http://www.example.com?id=')",nargs='*')
+                        help="Example:-t number  1:纯链接式爬取  2:C段扫描  3:fastjson检测(源码配置ceye.io)  4:xss检测(配置chromedriver,参数例:'http://www.example.com?id='  5:自定义POC检测)",nargs='*')
     parser.add_argument("-d", dest="dir",
-                        help="字典式爆破")
+                        help="字典式爆破;Example:-d url")
     parser.add_argument("-ui", dest="flask",
-                        help="以交互界面式启动")
+                        help="以交互界面式启动;Example:-ui flask")
     parser.add_argument("-p", dest="port",
-                        help="自定义端口扫描（ip 起始端口 终点端口）",nargs='*')
+                        help="自定义端口扫描;Example:-p ip portStart portEnd",nargs='*')
     parser.add_argument("-f", dest="finger",
-                        help="CMS指纹查询（潮汐+fofa）")
+                        help="CMS指纹查询;Example:-f url")
     parser.add_argument("-s", dest="scan",
-                        help="xray批量扫描（主目录url.txt中写入目标） awvs批量扫描（配置awvs_config.ini,主目录url.txt中写入目标）")
+                        help="xray批量扫描（主目录url.txt中写入目标）;Example:-f xray")
     """
     parser.add_argument("-w", dest="wordlist", type=str, default="./wordlist.txt",
                         help="Customize wordlist (default wordlist.txt) or a single path")
@@ -233,12 +232,14 @@ if __name__ == '__main__':
         console.print("[[x]] python3 choscan.py -h")
         exit(0)
     # 解析
-    if args.task is not None and args.task[0] != '3' and args.task[0] != '4':
+    if args.task is not None and args.task[0] != '3' and args.task[0] != '4' and args.task[0] != '5':
         switch.get(args.task[0])()
     if args.task is not None and args.task[0] == '3':
         fastjson_blby.start(args.task[1])
     if args.task is not None and args.task[0] == '4':
         switch.get(args.task[0])(args.task[1])
+    if args.task is not None and args.task[0] == '5':
+        your_poc.start()
     if args.dir is not None:
         use_dirscan.start(args.dir)
     if args.flask == "flask":
@@ -249,8 +250,6 @@ if __name__ == '__main__':
         web.run()
     if args.scan == "xray":
         xray_start()
-    if args.scan == "awvs":
-        awvs_add_url.start()
     if args.port is not None:
         PortScan.start(args.port[0],args.port[1],args.port[2])
     """
