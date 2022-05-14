@@ -36,7 +36,7 @@
     <div class="container">
 
       <div class="logo float-left">
-        <h1 class="text-light"><a href="/index"><span>C段扫描结果</span></a></h1>
+        <h1 class="text-light"><a href="/index"><span>漏洞检测结果</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="temp.html"><img src="static/assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -56,8 +56,8 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>子域名扫描结果</h2>
-          <p>应用Python爆破二级域名、多线程等工具和技术实现</p>
+          <h2>漏洞检测结果</h2>
+          <p>应用POCSUITE3等技术实现</p>
         </div>
 
       </div>
@@ -67,30 +67,29 @@
   <section class="counts section-bg">
       <div class="container">
           <table class="table table-striped">
-              <tr>
-                  <td>编号</td>
-                  <td>子域名</td>
-                  <td>真实IP</td>
-              </tr>
-              {% for item in renting %}
-                  <tr>
-                      <td>{{ loop.index }}</td>
-                      <td>
-                      <a href="http://{{ item[1] }}" target="_blank">
-                        {{ item[1] }}
-                      </a>
-                      </td>
-                      <td>
-                        <a>
-                        {{ item[2] }}
-                        </a>
-                      </td>
+
+                  <td>格式：邮箱</td>
+                
+                  <tr><form action='/input6' method="post" style= text-align:center id="myform">
+                      <td><input type="text" name="email" value="111@111.com（若已设置请忽略示例邮箱）" onkeydown="keyup_submit(event);">
+                          </td>
+                    </form>
+                      <script>
+                        //表单提交
+                        function keyup_submit(e){ 
+                          var evt = window.event || e;
+                          if (evt.keyCode == 13){
+                            var form = document.getElementById("myform");
+                            form.submit();
+                        }}
+                        </script>
                   </tr>
-              {% endfor %}
+              
           </table>
 
       </div>
     </section><!-- End Counts Section -->
+
 
   <!-- ======= Footer ======= -->
   <footer id="footer">

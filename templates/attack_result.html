@@ -36,7 +36,7 @@
     <div class="container">
 
       <div class="logo float-left">
-        <h1 class="text-light"><a href="/index"><span>C段扫描结果</span></a></h1>
+        <h1 class="text-light"><a href="/index"><span>漏洞检测结果</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="temp.html"><img src="static/assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -56,8 +56,8 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>子域名扫描结果</h2>
-          <p>应用Python爆破二级域名、多线程等工具和技术实现</p>
+          <h2>漏洞检测结果</h2>
+          <p>应用POCSUITE3等技术实现</p>
         </div>
 
       </div>
@@ -68,23 +68,25 @@
       <div class="container">
           <table class="table table-striped">
               <tr>
-                  <td>编号</td>
-                  <td>子域名</td>
-                  <td>真实IP</td>
+                  <td>检测时间</td>
+                  <td>漏洞名称</td>
+                  <td>目标IP</td>
+                  <td>检测结果</td>
               </tr>
-              {% for item in renting %}
+              {% for item in data %}
                   <tr>
-                      <td>{{ loop.index }}</td>
+                      <td>{{ item[1] }}</td>
+                      <td>{{ item[2] }}</td>
                       <td>
-                      <a href="http://{{ item[1] }}" target="_blank">
-                        {{ item[1] }}
-                      </a>
+                          {{ item[3] }}
                       </td>
+                      {% if item[4] == 'expired' and loop.index == 1 %}
+                        <td><a href="/download">下载</a></td>
+                        {% else %}
                       <td>
-                        <a>
-                        {{ item[2] }}
-                        </a>
+                          {{ item[4] }}
                       </td>
+                      {% endif %}
                   </tr>
               {% endfor %}
           </table>

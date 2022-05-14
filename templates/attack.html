@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>端口扫描结果</title>
+  <title>详情页汇总</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -23,6 +23,9 @@
   <link href="static/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="static/assets/vendor/venobox/venobox.css" rel="stylesheet">
   <link href="static/assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="http://at.alicdn.com/t/font_2622156_g5br5i2lvgp.css" rel="stylesheet">
+  <link href="http://at.alicdn.com/t/font_2622156_kd7gr2q6nnq.css" rel="stylesheet">
+
 
   <!-- Template Main CSS File -->
   <link href="static/assets/css/style.css" rel="stylesheet">
@@ -36,7 +39,7 @@
     <div class="container">
 
       <div class="logo float-left">
-        <h1 class="text-light"><a href="/index"><span>C段扫描结果</span></a></h1>
+        <h1 class="text-light"><a href="/index"><span>详情信息汇总</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="temp.html"><img src="static/assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -44,6 +47,10 @@
       <nav class="nav-menu float-right d-none d-lg-block">
         <ul>
             <li class="active"><a href="/index">首页<i class="la la-angle-down"></i></a></li>
+            <li><a href="/title">详情结果</a></li>
+            <li><a href="/saomiao">扫描</a></li>
+            <li><a href="/index">设置信息</a></li>
+            <li><a href="/index">开发者</a></li>
             <!--<li><a href="#team">团队</a></li>-->
         </ul>
       </nav><!-- .nav-menu -->
@@ -56,8 +63,8 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>子域名扫描结果</h2>
-          <p>应用Python爆破二级域名、多线程等工具和技术实现</p>
+          <h2>Matoi漏洞扫描数据分析</h2>
+          <p>应用Python爬虫、Flask框架、Echarts、WordCloud等技术实现</p>
         </div>
 
       </div>
@@ -66,29 +73,47 @@
   <!-- ======= Counts Section ======= -->
   <section class="counts section-bg">
       <div class="container">
-          <table class="table table-striped">
-              <tr>
-                  <td>编号</td>
-                  <td>子域名</td>
-                  <td>真实IP</td>
-              </tr>
-              {% for item in renting %}
-                  <tr>
-                      <td>{{ loop.index }}</td>
-                      <td>
-                      <a href="http://{{ item[1] }}" target="_blank">
-                        {{ item[1] }}
-                      </a>
-                      </td>
-                      <td>
-                        <a>
-                        {{ item[2] }}
-                        </a>
-                      </td>
-                  </tr>
-              {% endfor %}
-          </table>
 
+        <div class="row">
+
+          <div class="col-lg-15 col-md-50 text-center" data-aos="fade-up" data-aos-delay="200">
+                  <div class="count-box">
+                    <i class="iconfont icon-xingzhuang43" style="color: #205bb3;"></i>
+                    <form action='/input5' method="post" style= text-align:center id="myform">
+                        <select name="list">
+                            <option value=""></option>
+                            <option value="1">Xray扫描(Windows版)</option>
+                            <option value="a">Telnet 弱口令</option>
+                            <option value="b">Thinkphp 5.0.x 远程代码执行漏洞</option>
+                            <option value="c">Redis未授权访问</option>
+                            <option value="d">Node-RED 未授权远程命令执行</option>
+                            <option value="e">Weblogic 10.3.6 wls-wsat XMLDecoder 反序列化漏洞（CVE-2017-10271）</option>
+                        </select>
+                        <input type="text" name="ip" value="输入ip或url" onkeydown="keyup_submit(event);">
+                    </form>
+                        <script>
+                        //表单提交
+                        function keyup_submit(e){ 
+                          var evt = window.event || e; 
+                          if (evt.keyCode == 13){
+                            var form = document.getElementById("myform");
+                            form.submit();
+                        }}
+                        </script>
+            </div>
+          </div>
+
+        <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="400">
+          <a href="/list_attack">
+              <div class="count-box">
+                <i class="iconfont icon-Information-crawling" style="color: #20b38e;"></i>
+                <span data-toggle="counter-up">{{ len }}</span>
+                <p>漏洞扫描历史</p>
+              </div>
+          </a>
+      </div>
+
+    </div>
       </div>
     </section><!-- End Counts Section -->
 

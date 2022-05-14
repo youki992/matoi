@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>端口扫描结果</title>
+  <title>指纹检测结果</title>
   <meta content="" name="descriptison">
   <meta content="" name="keywords">
 
@@ -36,7 +36,7 @@
     <div class="container">
 
       <div class="logo float-left">
-        <h1 class="text-light"><a href="/index"><span>C段扫描结果</span></a></h1>
+        <h1 class="text-light"><a href="/index"><span>指纹检测结果</span></a></h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="temp.html"><img src="static/assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
@@ -44,6 +44,10 @@
       <nav class="nav-menu float-right d-none d-lg-block">
         <ul>
             <li class="active"><a href="/index">首页<i class="la la-angle-down"></i></a></li>
+            <li><a href="/title">详情结果</a></li>
+            <li><a href="/saomiao">扫描</a></li>
+            <li><a href="/index">设置信息</a></li>
+            <li><a href="/index">开发者</a></li>
             <!--<li><a href="#team">团队</a></li>-->
         </ul>
       </nav><!-- .nav-menu -->
@@ -56,8 +60,8 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>子域名扫描结果</h2>
-          <p>应用Python爆破二级域名、多线程等工具和技术实现</p>
+          <h2>指纹检测结果</h2>
+          <p>应用Socket等技术实现</p>
         </div>
 
       </div>
@@ -68,22 +72,22 @@
       <div class="container">
           <table class="table table-striped">
               <tr>
-                  <td>编号</td>
-                  <td>子域名</td>
-                  <td>真实IP</td>
+                  <td>检测时间</td>
+                  <td>URL地址</td>
+                  <td>FOFA匹配结果</td>
+                  <td>潮汐匹配结果</td>
               </tr>
-              {% for item in renting %}
+              {% for item in data %}
                   <tr>
-                      <td>{{ loop.index }}</td>
+                      <td>{{ item[0] }}</td>
+                      <td><a
+                         href="{{ item[1] }}" target="_blank">
+                          {{ item[1] }}</a></td>
                       <td>
-                      <a href="http://{{ item[1] }}" target="_blank">
-                        {{ item[1] }}
-                      </a>
+                        {{ item[2] }}
                       </td>
                       <td>
-                        <a>
-                        {{ item[2] }}
-                        </a>
+                        {{ item[3] }}
                       </td>
                   </tr>
               {% endfor %}
