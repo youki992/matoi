@@ -71,6 +71,3 @@ matoi目前beta版本暂时支持单个URL/IP查询
 
 [![Star History Chart](https://api.star-history.com/svg?repos=youki992/matoi&type=Date)](https://star-history.com/#youki992/matoi&Date)
 
-## 欢迎加入知识星球分享安全&开发知识
-
-![image](https://github.com/youki992/matoi/blob/main/星球优惠券%20(1).png)
